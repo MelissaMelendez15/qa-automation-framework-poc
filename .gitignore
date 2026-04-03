@@ -1,17 +1,62 @@
-
-# VSCode
-.vscode/
-
 # Node
-node_modules/
 
-# Env files
-.env
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+
+**pycache**/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
 
 # Logs
+
+logs/
 *.log
 
+# Environment variables
+
+.env
+.env.*
+
+# VSCode
+
+.vscode/
+
+# Salesforce
+
+.sfdx/
+
 # OS
+
 .DS_Store
-# Added by ggshield
-.cache_ggshield
+Thumbs.db
+
+# Docker
+
+*.tar
+
+# Results (generated files)
+
+results/raw/
+results/processed/
+results/evidence/
+
+# Temporary files
+
+tmp/
+temp/
+
+# Jenkins (si luego guardas cosas locales)
+
+.jenkins/
+
+# Coverage / reports
+
+coverage/
+report/
