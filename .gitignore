@@ -1,0 +1,16 @@
+# VSCode
+.vscode/
+
+# Node
+node_modules/
+
+# Env files
+.env
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+# Added by ggshield
+.cache_ggshield
