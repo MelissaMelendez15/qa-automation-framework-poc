@@ -37,7 +37,7 @@ La arquitectura está diseñada para permitir futuras extensiones, como generaci
 ## 🏗️ Arquitectura
 
 <p align="center">
-  <img src="docs//architecture/qa-automation-architecture.png" alt="Arquitectura QA" width="600"/>
+  <img src="docs/architecture/qa-automation-architecture.png" alt="Arquitectura QA" width="600"/>
 </p>
 
 ---
