@@ -1,5 +1,6 @@
 # QA Automation Framework PoC
 
+
 ## 📌 Descripción general
 
 Este proyecto es una Prueba de Concepto (PoC) de un **framework de automatización QA configurable**, diseñado para soportar tanto **Salesforce** como **aplicaciones web**.
