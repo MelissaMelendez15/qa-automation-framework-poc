@@ -10,7 +10,7 @@ pipeline {
         
         stage('Run Playwright Tests') {
             steps {
-                sh 'docker compose run --rm qa-playwright bash scripts/run/run-tests.sh' 
+                sh 'docker-compose run --rm qa-playwright bash scripts/run/run-tests.sh' 
                 
             }
         }
