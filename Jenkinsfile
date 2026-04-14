@@ -40,17 +40,11 @@ pipeline {
         stage('Collect Results') {
             steps {
                 sh '''
-                    docker cp ${RUNNER_CONTAINER}:/app/results/raw ./results/
-                    
-                    if docker exec ${RUNNER_CONTAINER} test -d /app/results/evidence; then
-                      docker cp ${RUNNER_CONTAINER}:/app/results/evidence ./results/ || true
-                    fi
-
-                    if docker exec ${RUNNER_CONTAINER} test -d /app/test-results; then
-                      mkdir -p test-results
-                      docker cp ${RUNNER_CONTAINER}:/app/test-results/. ./test-results/ || true
-                    fi
-                '''
+                    docker cp ${RUNNER_CONTAINER}:/app/results/raw ./results/ || true
+                    docker cp ${RUNNER_CONTAINER}:/app/results/evidence ./results/ || true
+                    mkdir -p test-results
+                    docker cp ${RUNNER_CONTAINER}:/app/test-results/. ./test-results/ || true
+          '''
             }
         }
     }
