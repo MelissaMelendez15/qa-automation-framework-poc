@@ -14,5 +14,15 @@ module.exports = defineConfig({
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     trace: 'retain-on-failure'
-  }
+  },
+  projects: [
+    {
+      name: 'chromium',
+      use: { browserName: 'chromium' }
+    },
+    {
+      name: 'firefox',
+      use: { browserName: 'firefox' }
+    },
+  ]  
 });
