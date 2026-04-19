@@ -1,6 +1,13 @@
 pipeline {
     agent any
 
+    parameters {
+        choice(name: 'PROJECT', choices: ['web'], description: 'Selecciona el proyecto a ejecutar')
+        choice(name: 'SUITE', choices: ['smoke', 'regression', 'all'], description: 'Selecciona la suite de pruebas a ejecutar')
+        choice(name: 'ENVIRONMENT', choices: ['qa', 'staging'], description: 'Selecciona el entorno de ejecución')
+        choice(name: 'BROWSER', choices: ['chromium', 'firefox'], description: 'Selecciona el navegador para las pruebas')
+    }
+
     environment {
         RUNNER_CONTAINER = 'qa-playwright-runner'
     }
@@ -33,7 +40,7 @@ pipeline {
                 script {
                     sh "docker rm -f ${RUNNER_CONTAINER} >/dev/null 2>&1 || true"
                     env.PLAYWRIGHT_EXIT = sh(
-                        script: "docker-compose run --name ${RUNNER_CONTAINER} qa-playwright bash scripts/run/run-tests.sh web smoke qa chromium",
+                        script: "docker-compose run --name ${RUNNER_CONTAINER} qa-playwright bash scripts/run/run-tests.sh ${params.PROJECT} ${params.SUITE} ${params.ENVIRONMENT} ${params.BROWSER}",
                         returnStatus: true
                     ).toString()
                 }
