@@ -60,3 +60,6 @@ temp/
 
 coverage/
 report/
+
+# Dashboard build files
+.next/
