@@ -82,6 +82,9 @@ pipeline {
                     # Copia de resultados procesados (summary.json)
                     docker cp ${RUNNER_CONTAINER}:/app/results/processed ./results/ || true
 
+                    # Copia de resultados históricos (history)
+                    docker cp ${RUNNER_CONTAINER}:/app/results/history ./results/ || true
+
                     # Copia de evidencias (screenshots, videos, trace)
                     docker cp ${RUNNER_CONTAINER}:/app/results/evidence ./results/ || true
 
