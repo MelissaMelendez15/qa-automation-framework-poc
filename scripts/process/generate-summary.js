@@ -3,6 +3,7 @@ const path = require('path');
 
 const rawReportPath = path.join('results', 'raw', 'playwright-report.json');
 const outputPath = path.join('results', 'processed', 'summary.json');
+const historyDir = path.join('results', 'history');
 
 if (!fs.existsSync(rawReportPath)) {
   console.error(`No se encontró el reporte raw: ${rawReportPath}`);
@@ -36,7 +37,17 @@ for (const suite of rawReport.suites || []) {
   }
 }
 
-const summary = {
+const safeStartTime = (rawReport.stats?.startTime || new Date().toISOString())
+  .replace(/[:.]/g, '-'); // Reemplaza caracteres no válidos para nombres de archivos
+
+const firstTest = tests[0] || {};
+const executionId = `${safeStartTime}-${firstTest.file || 'unknown'}-${firstTest.browser || 'unknown'}`
+  .replace(/[\\/]/g, '-') // Reemplaza caracteres no válidos para nombres de archivos
+  .replace(/\s+/g, '_') // Reemplaza espacios por guiones bajos
+  .toLowerCase(); // Convierte a minúsculas
+
+  const summary = {
+  executionId,
   tool: 'playwright',
   toolVersion: rawReport.config?.version || null,
   executionStatus: rawReport.stats?.unexpected > 0 ? 'failed' : 'passed',
@@ -53,5 +64,9 @@ const summary = {
 
 fs.mkdirSync(path.dirname(outputPath), { recursive: true });
 fs.writeFileSync(outputPath, JSON.stringify(summary, null, 2));
-
+fs.mkdirSync(historyDir, { recursive: true });
+fs.writeFileSync(
+  path.join(historyDir, `${executionId}.json`),
+  JSON.stringify(summary, null, 2)
+);
 console.log(`Summary generado correctamente en ${outputPath}`);

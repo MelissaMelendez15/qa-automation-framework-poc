@@ -1,0 +1,26 @@
+{
+  "executionId": "2026-04-25t11-22-31-952z-web-regression-example.spec.js-chromium",
+  "tool": "playwright",
+  "toolVersion": "1.59.1",
+  "executionStatus": "passed",
+  "stats": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0
+  },
+  "durationMs": 1006.817,
+  "startTime": "2026-04-25T11:22:31.952Z",
+  "tests": [
+    {
+      "name": "regression - validar contenido visible",
+      "file": "web/regression/example.spec.js",
+      "status": "passed",
+      "durationMs": 310,
+      "browser": "chromium",
+      "startTime": "2026-04-25T11:22:32.340Z",
+      "errors": [],
+      "attachments": []
+    }
+  ]
+}
