@@ -93,6 +93,25 @@ pipeline {
                 '''
             }
         }
+
+        stage('Publish Results to Dashboard') {
+            steps {
+                sh '''
+                    # Asegura que la carpeta compartida existe dentro del contenedor Jenkins
+                    mkdir -p /shared-results/processed /shared-results/history /shared-results/test-results
+
+                    # Última ejecución para el dashboard
+                    cp - r cp -r results/processed/* /shared-results/processed/ || true
+
+                    # Histórico de ejecuciones
+                    cp -r results/history/* /shared-results/history/ || true
+
+                    # Evidencias de Playwright
+                    cp -r test-results/* /shared-results/test-results/ || true
+
+                '''
+            }
+        }
     }
 
     post {

@@ -1,4 +1,5 @@
 import { readSummary } from "@/lib/readSummary";
+export const dynamic = "force-dynamic"; // Forzar renderizado dinámico para siempre mostrar datos actualizados
 
 export default function Home() {
   const summary = readSummary();

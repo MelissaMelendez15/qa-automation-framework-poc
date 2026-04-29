@@ -6,3 +6,15 @@ services:
     container_name: qa-playwright
     working_dir: /app
     tty: true
+
+  qa-dashboard:
+    build:
+      context: .
+      dockerfile: infra/docker/Dockerfile.dashboard
+    container_name: qa-dashboard
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./results:/results:ro
+     
