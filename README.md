@@ -57,7 +57,7 @@ La arquitectura está diseñada para permitir futuras extensiones, como generaci
 
 * Jenkins (orquestación CI/CD)
 * Playwright (ejecución de tests)
-* Node.js / Python (por definir)
+* Next.js
 * Capa de reporting custom (por definir)
 * Docker (contenedorización)
 
